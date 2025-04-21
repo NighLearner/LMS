@@ -92,28 +92,7 @@ for k in range(M-1, N):
 
 The script plots the clean, noisy, and denoised signals and saves them as WAV files. The plot, saved as `lms_results.png`, visually confirms the noise reduction:
 
-```python
-plt.figure(figsize=(12, 6))
-plt.subplot(311)
-plt.plot(t, clean_signal)
-plt.title('Clean Signal')
-plt.subplot(312)
-plt.plot(t, noisy_signal)
-plt.title('Noisy Signal')
-plt.subplot(313)
-plt.plot(t[M-1:], e[M-1:])
-plt.title('Denoised Signal')
-plt.tight_layout()
-plt.savefig('lms_results.png')
-
-def float_to_int16(signal):
-    signal = np.clip(signal, -1, 1)
-    return np.int16(signal * 32767)
-
-wavfile.write('clean_signal.wav', fs, float_to_int16(clean_signal))
-wavfile.write('noisy_signal.wav', fs, float_to_int16(noisy_signal))
-wavfile.write('denoised_signal.wav', fs, float_to_int16(e))
-```
+![Noise removal](lms_results.png)
 
 ## Relevance to Smart Earphones
 
